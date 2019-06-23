@@ -3,10 +3,12 @@ const database = require("../../config/database");
 
 module.exports = async function(controller) {
   controller.on("facebook_postback", async (bot, message) => {
+    let i;  
+
     if (message.text.includes("info")) {
       let getProductsFromBestBuy = await bestbuy.GetCategories();
 
-      for (let i = 0; i < 9; i++) {
+      for (i = 0; i < 9; i++) {
         if (message.text[message.text.length - 1] == i) {
           await bot.reply(message, {
             "attachment": {
@@ -53,6 +55,7 @@ module.exports = async function(controller) {
   });
 
   controller.on("message", async (bot, message) => {
+    let i;
     if (message.quick_reply && message.quick_reply.payload === "FavoritesPL") {
       let getProductsFromBestBuy = await bestbuy.GetCategories();
       let favorites = await database.getFavorite(message.user);
@@ -60,7 +63,7 @@ module.exports = async function(controller) {
       let favArray = [];
 
       if (favorites.length > 0) {
-        for (let i = 0; i < favorites.length; i++) {
+        for (i = 0; i < favorites.length; i++) {
           favArray.push({
             "title": getProductsFromBestBuy.products[favorites[i].product].name,
             "image_url": getProductsFromBestBuy.products[favorites[i].product].image,
