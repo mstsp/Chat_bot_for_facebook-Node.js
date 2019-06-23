@@ -3,12 +3,11 @@ const database = require("../../config/database");
 
 module.exports = async function(controller) {
   controller.on("facebook_postback", async (bot, message) => {
-    let i;  
 
     if (message.text.includes("info")) {
       let getProductsFromBestBuy = await bestbuy.GetCategories();
 
-      for (i = 0; i < 9; i++) {
+      for (let i = 0; i < 9; i++) {
         if (message.text[message.text.length - 1] == i) {
           await bot.reply(message, {
             "attachment": {
@@ -38,18 +37,31 @@ module.exports = async function(controller) {
           });
         }
       }
-    } else if (message.text.includes(`fav${i}`)) {
-      let isUnique = await database.findFavorite(message.user, i);
-      if (isUnique != true) {
-        database.addToFavorite(message.user, i);
-        await bot.reply(message, "Added to your favorite list!");
-      } else if (isUnique != false) {
-        await bot.reply(message, "This product already in your favorite list");
+    } else if (message.text.includes(`fav`)) {
+      for (let i = 0; i < 9; i++) {
+        if(i == message.text[message.text.length-1])
+        {
+          let isUnique = await database.findFavorite(message.user, i);
+          if (isUnique != true) {
+            database.addToFavorite(message.user, i);
+            await bot.reply(message, "Added to your favorite list!");
+          } else if (isUnique != false) {
+            await bot.reply(message, "This product already in your favorite list");
+          }
+        }
       }
-    } else if (message.text.includes(`del${i}`)) {
-      let isExist = await database.deleteFavorite(message.user, i);
-      if (isExist == true) {
-        await bot.reply(message, "Deleted from your favorite list");
+    } else if (message.text.includes(`del`)) {
+      for (let i = 0; i < 9; i++) {
+        if(i == message.text[message.text.length-1])
+        {  
+          let isDeleted = await database.deleteFavorite(message.user, i);
+          if (isDeleted == true) {
+            await bot.reply(message, "Deleted from your favorite list!");
+          }
+          else{
+            await bot.reply(message, "This item has already deleted!");
+          }
+        }
       }
     }
   });

@@ -57,7 +57,7 @@ function DeleteFavorite(user, product) {
       return collectionItems.deleteOne({ user: user, product: product });
     })
     .then(function(item) {
-      return item != null;
+      return item.deletedCount == 1;
     });
 }
 
