@@ -1,5 +1,5 @@
 const variables = require("../../config/variables");
-const bestbuy = require(".../../config/bestbuyapi");
+const bestbuy = require("../../config/bestbuyapi");
 
 module.exports = async function(controller) {
   // меню с датой покупок

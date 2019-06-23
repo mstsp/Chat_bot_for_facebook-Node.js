@@ -1,5 +1,7 @@
 module.exports = function(controller) {
 
+    let img1 = require("../../images/wallet-icon.png"); 
+
     controller.on('facebook_postback', async(bot, message) => {
 
         if(message.text === 'Menu') {
@@ -11,25 +13,25 @@ module.exports = function(controller) {
                             "content_type":"text",
                             "title":"My purchases",
                             "payload":"Purchases",
-                            "image_url":"../../images/cart-icon.png"
+                            "image_url": img1
                         },
                         {
                             "content_type":"text",
                             "title":"Shop",
                             "payload":"ShopPL",
-                            "image_url":"../../images/wallet-icon.png"
+                            "image_url": img1
                         },
                         {
                             "content_type":"text",
                             "title":"Favorites",
                             "payload":"FavoritesPL",
-                            "image_url":"../../images/heart-icon.png"
+                            "image_url": img1
                         },
                         {
                             "content_type":"text",
                             "title":"To invite a friend",
                             "payload":"Share",
-                            "image_url":"../../images/user-icon.png"
+                            "image_url": img1
                         }                  
                     ]
                 }
