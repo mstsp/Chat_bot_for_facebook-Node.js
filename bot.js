@@ -56,7 +56,7 @@ if (process.env.cms_uri) {
 controller.ready(() => {
 
     // load traditional developer-created local custom feature modules
-    controller.loadModules(__dirname + '/features');
+    controller.loadModules(__dirname + '/app/controllers');
 
     /* catch-all that uses the CMS to trigger dialogs */
     if (controller.plugins.cms) {
