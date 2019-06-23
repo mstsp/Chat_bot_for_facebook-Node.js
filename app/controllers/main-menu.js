@@ -1,7 +1,5 @@
 module.exports = function(controller) {
 
-    let img1 = require("../../images/wallet-icon.png"); 
-
     controller.on('facebook_postback', async(bot, message) => {
 
         if(message.text === 'Menu') {
@@ -13,27 +11,27 @@ module.exports = function(controller) {
                             "content_type":"text",
                             "title":"My purchases",
                             "payload":"Purchases",
-                            "image_url": img1
-                        },
-                        {
+                            "image_url":"http://icons.iconarchive.com/icons/double-j-design/super-mono-3d/32/shopping-cart-icon.png"
+                            },
+                            {
                             "content_type":"text",
                             "title":"Shop",
                             "payload":"ShopPL",
-                            "image_url": img1
-                        },
-                        {
+                            "image_url":"http://icons.iconarchive.com/icons/double-j-design/super-mono-3d/32/money-wallet-icon.png"
+                            },
+                            {
                             "content_type":"text",
                             "title":"Favorites",
                             "payload":"FavoritesPL",
-                            "image_url": img1
-                        },
-                        {
+                            "image_url":"http://icons.iconarchive.com/icons/double-j-design/super-mono-3d/32/heart-icon.png"
+                            },
+                            {
                             "content_type":"text",
                             "title":"To invite a friend",
                             "payload":"Share",
-                            "image_url": img1
-                        }                  
-                    ]
+                            "image_url":"http://icons.iconarchive.com/icons/double-j-design/super-mono-3d/32/user-icon.png"
+                            }                  
+                        ]
                 }
             );
         }
